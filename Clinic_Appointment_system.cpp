@@ -7,13 +7,13 @@
 //Abbas Ali(BSIT-2024-046)
 //Muhammad Aswed(BSIT-2024-048)
 
-#include <iostream>     //for input output service
-#include <string>       //to manage string data type
+#include <iostream>
+#include <string>
 
 using namespace std;
 
 
-class Appointment {     //to store slot details
+class Appointment {
 public:
     string patientName;
     string patientContact;
@@ -21,19 +21,19 @@ public:
     string status = "available" ;
 };
 
-class slots {           //to create slots
+class slots {
 private:
     Appointment appointments[8];
     string appointmentStatus[8];
 
 public:
     slots() {
-        for (int i = 0; i < 8; ++i) {               //creating slots as objects
+        for (int i = 0; i < 8; ++i) {
             appointmentStatus[i] = "Available";
         }
     }
 
-    void bookappointment() {                //function to book appointment slots
+    void bookappointment() {
         while(1){
             system("cls");
             cout << " ----- Book Your Appointment ---- \n";
@@ -46,49 +46,49 @@ public:
 
             cout << "\n\nInput slot number of your choice or '0' to go back : ";
             int choice;
-            cin >> choice;                  //taking user input for desired slot
+            cin >> choice;
 
             if (choice > 0 && choice <= 8) {
-                if (appointmentStatus[choice - 1] == "Available") {          //taking patient's info if slot is available    
-                cin.ignore();       //ignoring the line left by previous input
+                if (appointmentStatus[choice - 1] == "Available") {
+                cin.ignore(); //ignoring the line left by previous input
                 cout << "\nEnter your First name: ";
-                getline(std::cin, appointments[choice - 1].patientName);       // input name 
+                getline(std::cin, appointments[choice - 1].patientName);
 
                 cout << "\nEnter your contact number: ";
-                getline(std::cin, appointments[choice - 1].patientContact);    //input contact number
+                getline(std::cin, appointments[choice - 1].patientContact);
 
                 cout << "\nBriefly describe your ailment: ";
-                getline(std::cin, appointments[choice - 1].patientAilment);   //input illness / ailment
+                getline(std::cin, appointments[choice - 1].patientAilment);
 
-                    appointmentStatus[choice - 1] = "Booked";                 //changing slot status from available to booked
+                    appointmentStatus[choice - 1] = "Booked";
                     appointments[choice - 1].status = "Booked";
                 }
-                else {                  //telling user if slot is not availble
+                else {
                     cout << "Slot "<< choice << " is already booked.\npress enter to continue...";
                     cin.ignore();
                     cin.ignore();
                 }
             }
-            else if (choice < 0 || choice > 8) {           //telling user if the slot does not exist
+            else if (choice < 0 || choice > 8) {
                 cout << "Invalid choice.\n";
             }
-            else if(choice == 0){       //going back if input is "0"
+            else if(choice == 0){
                 return;
             }
         }
         system("cls");
     }
 
-    void displayAppointments() {        //displaying slot's complete info for doctor
+    void displayAppointments() {
         for (int i = 0; i < 8; ++i) {
             cout << "Slot " << i + 1;
-            if (appointmentStatus[i] == "Booked") {  //if slot booked displaying patients info   
-                cout << " - Booked\n\t- Patient: " << appointments[i].patientName << "\n \t";   //printing patient's name
-                cout<< "- patien contact number: " << appointments[i].patientContact <<"\n \t"; //patient's contact number
-                cout<< "- patient Ailment: " <<appointments[i].patientAilment << endl << endl;  //patient's illness or aiment.
+            if (appointmentStatus[i] == "Booked") {
+                cout << " - Booked\n\t- Patient: " << appointments[i].patientName << "\n \t";
+                cout<< "- patien contact number: " << appointments[i].patientContact <<"\n \t";
+                cout<< "- patient Ailment: " <<appointments[i].patientAilment << endl << endl;
             }
             else {
-                cout << " - Available" << endl;     //when slot available displaying available
+                cout << " - Available" << endl;
             }
         }
         cout<<"\n Press Enter to continue...";
@@ -96,7 +96,7 @@ public:
     }
 };
 
-int login(slots& slotManager) {             //login system for doctor to protect patient's personal info
+int login(slots& slotManager) {
         string password;
         cout << "\n\npassword = 'doctor'";
         cout << "\n\nenter password: ";
@@ -118,8 +118,7 @@ int main() {
 
     cout << "\t\t    --- Clinic Appointment System --- \n-------------------------------------------------------------------------\n";
     cout << "\t\t\t----- Project by ---- \n-------------------------------------------------------------------------\n";
-    cout << "        Shaheer Ali(BSIT-2024-035) - Saifurrehman Rao(BSIT-2024-037) \n";
-    cout << "       Muhammad Wasif(BSIT-2024-040) - Muhammad Ammar(BSIT-2024-044)";
+    cout << "        Shaheer Ali(BSIT-2024-035) - Saifurrehman Rao(BSIT-2024-037) \n        Muhammad Wasif(BSIT-2024-040) - Muhammad Ammar(BSIT-2024-044) ";
     cout << "\n           Husnain Ali(BSIT-2024-045) - Abbas Ali(BSIT-2024-046) \n\t\t       Muhamad Aswed(BSIT-2024-048)\n";
 
     cout<<"\n Press Enter to continue...";
@@ -140,22 +139,22 @@ int main() {
         switch (choice) {
             case 1: {
                 system("cls");
-                slotManager.bookappointment();      //calling appointment booking function
+                slotManager.bookappointment();
                 system("cls");
                 break;
             }
             case 2: {
-                login(slotManager);         //calling doctor's login function
+                login(slotManager);
                 system("cls");
                 break;
             }
 
             case 3: {system("cls");
-                continueProgram = 'n';  //if exitted, loop is broken
+                continueProgram = 'n';
                 break;
             }
 
-            default: {          //in case of invalid input printing invalid choice.
+            default: {
                 system("cls");
                 cout << "Invalid choice!\n";
                 break;
@@ -165,8 +164,7 @@ int main() {
     cout << "\nExiting program.\n";
     cout << "\t\t    --- Clinic Appointment System --- \n-------------------------------------------------------------------------\n";
     cout << "\t\t\t----- Project by ---- \n-------------------------------------------------------------------------\n";
-    cout << "        Shaheer Ali(BSIT-2024-035) - Saifurrehman Rao(BSIT-2024-037) \n";
-    cout << "        Muhammad Wasif(BSIT-2024-040) - Muhammad Ammar(BSIT-2024-044)";
+    cout << "        Shaheer Ali(BSIT-2024-035) - Saifurrehman Rao(BSIT-2024-037) \n        Muhammad Wasif(BSIT-2024-040) - Muhammad Ammar(BSIT-2024-044) ";
     cout << "\n           Husnain Ali(BSIT-2024-045) - Abbas Ali(BSIT-2024-046) \n\t\t       Muhamad Aswed(BSIT-2024-048)\n";
     return 0;
 }
