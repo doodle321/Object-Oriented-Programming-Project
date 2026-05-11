@@ -7,44 +7,46 @@ class Students{
     public:
         string name;
         int age;
-        int cnic;
-        char dept;
+        string cnic;
+        int dept;
+        string deptl [4] = {"Information Technology", "Data Science", "Computer Science", "Maths"};
         
         void add_stud(){
+            int cont = 1;
+            char choice;
             system("clear");
 
-            cout << "Student Name: ";
-            cin >> name;
-            cout << "\nAge: ";
-            cin>> age;
-            cout << "\ncnic: ";
-            cin>>cnic;
-            cout << "\na) CS\nb) IT\nc) DS\nd) maths\ndepartment choice: ";
-            cin >>dept;
-        }
-        void view(){
-            cout << "Name: " << name <<"\nAge: " << age << "\ncnic: " << cnic << "\ndept: ";
-            switch (dept) {
-                case 'a': {
-                    cout << "Computer Science\n";
-                    break;
-                }
-
-                case 'b': {
-                    cout << "Information Technology\n";
-                    break;
-                }
-
-                case 'c': {
-                    cout << "Data Science\n";
-                    break;
-                }
-
-                case 'd': {
-                    cout << "Maths\n";
-                    break;
+            while(cont == 1){
+                choice = 'a';
+                cout << "Student Name: ";
+                cin >> name;
+                cout << "\nAge: ";
+                cin>> age;
+                cout << "\ncnic: ";
+                cin>>cnic;
+                cout << "\n1) IT\n2) DS\n3) CS\n4) Maths\ndepartment choice: ";
+                cin >>dept;
+                dept--;
+                
+                while(choice != 'y' && choice != 'n'){
+                    cout << "\n\nPlease recheck all the information\n\nSubmit? (y/n): ";
+                    cin >> choice;
+                    if (choice == 'y'){
+                        cont = 0;
+                    }
+                    else if (choice == 'n'){
+                        cont = 1;
+                        system("clear");
+                        cout << "enter your details again\n";
+                    } 
+                    else {
+                        cout << "\n invalid choice.";
+                    }
                 }
             }
+        }
+        void view(){
+            cout << "Name: " << name <<"\nAge: " << age << "\ncnic: " << cnic << "\ndept: " << deptl[dept];
             cout <<"\n------------------------------------\n";
         }
 };
@@ -67,14 +69,13 @@ int main(){
             studs[i].add_stud();
             i++;
             system("clear");
-        }
-        
+        } 
         else{
             l++;
             if (l == 2){
                 exit(0);
             }
-            if(i == 0 || i < 0){
+            else if(i == 0 || i < 0){
                 break;
             }
             else{
