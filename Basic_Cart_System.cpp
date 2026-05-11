@@ -11,7 +11,7 @@ class fruit{
         int add(string& cart,int& wgt, int& aprc){
             weight = 0;
             system("clear");
-            cout <<name << " " << price <<"/KG \nenter the weight (KGs): ";
+            cout <<name << " Rs" << price <<"/KG \nenter the weight (KGs): ";
             cin >> weight;
 
             cout << "\n \n \n";
@@ -37,8 +37,8 @@ class fruit{
             else{
                 system("clear");
                 aprc += price*weight;
-                cart += name + "(" + to_string(weight) + "KGs) Rs" + to_string(price*weight);
-                cout << cart << "   Total Price: Rs" << aprc << endl << endl;
+                cart += name + "(" + to_string(weight) + "KGs) \t\tRs" + to_string(price*weight) + "\n";
+                cout << cart << "----------------------\nTotal Price: \t\tRs" << aprc << endl << endl;
                 if (wgt < 98){
                     cout << "want to add something else? \navailable items:  apple   mango   orange  melon   banana \n";
                 }
@@ -51,60 +51,62 @@ void checkout(int cprc, string ccart){
     system("clear");
     int pay;
     cout << "\n \n" << ccart << "\n";
-    cout << "\n \nyour total is: Rs" << cprc;
-    cout << "\nenter amount to pay: Rs";
+    cout << "\n \nyour total is: \t\tRs" << cprc;
+    cout << "\nenter amount to pay: \tRs";
     cin >> pay;
 
     if(pay < cprc){
         do{
             cout << "insufficient amount. try again.";
-            cout << "\nenter amount to pay: Rs";
+            cout << "\nenter amount to pay: \tRs";
             cin >> pay;
         }while(pay < cprc);
     }
 
     if(pay >= cprc){
-        cout << "your change is: Rs" << pay - cprc << "\n \nthanks for shopping \n \n";
-        char quit;
+        cout << "your change is: \tRs" << pay - cprc << "\n \nthanks for shopping \n \n";
         cout << "enter any key to exit";
-        cin >> quit;
+        cin.ignore();                
+        cin.ignore();
+        exit(0);
     }
 }
 
 int main(){
+    system("clear");
 
-    string c = "cart: ";
+    string c = "cart: \n";
     string choice;
     int adwgt = 0;
     int mprc = 0;
 
     fruit apple;
-        apple.name = "   apple";
+        apple.name = "apple";
         apple.price = 60;
         apple.space = 2;
 
     fruit mango;
-        mango.name = "   mango";
+        mango.name = "mango";
         mango.price = 140;
         mango.space = 4;
 
     fruit banana;
-        banana.name = "   banana";
+        banana.name = "banana";
         banana.price = 70;
         banana.space = 5;
 
     fruit melon;
-        melon.name = "   melon";
+        melon.name = "melon";
         melon.price = 80;
         melon.space = 6;
 
     fruit orange;
-        orange.name = "   orange";
+        orange.name = "orange";
         orange.price = 60;
         orange.space = 3;
 
     fruit grape;
-        grape.name = '   grape';
+        grape.name = "grape";
         grape.price = 60;
         grape.space = 4;
 
