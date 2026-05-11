@@ -40,7 +40,7 @@ class fruit{
                 cart += name + "(" + to_string(weight) + "KGs) \t\tRs" + to_string(price*weight) + "\n";
                 cout << cart << "----------------------\nTotal Price: \t\tRs" << aprc << endl << endl;
                 if (wgt < 98){
-                    cout << "want to add something else? \navailable items:  apple   mango   orange  melon   banana \n";
+                    cout << "want to add something else? \navailable items:  apple   mango   orange  melon   banana \nor just type checkout for checkout \n";
                 }
             }
             return 0;
@@ -148,7 +148,7 @@ int main(){
             system("clear");
             cout << "\n \nfilled:" << adwgt << "%    remaining space: " << 100-adwgt << "%\n \n";
 
-            cout << c << "   Total Price: Rs" << mprc << endl << endl;
+            cout << c << "-------------------------------\nTotal Price: \t\tRs" << mprc << endl << endl;
 
             if (99 <= adwgt){
                 cout << "can not add anything else to the cart, type 'checkout' to checkout \n \n";
@@ -159,16 +159,16 @@ int main(){
             }
         }
 
-        else if (choice == "checkout"){}
+        else if (choice == "checkout"){
+            system("clear");
+            checkout(mprc,c);
+        }
 
         else{
             cout << "please enter the correct name. \n \n \n";
         }
 
-        }while(choice != "checkout");
-
-            system("clear");
-            checkout(mprc,c);
-
-        return 0;
+    }while(choice != "checkout");        
+    
+    return 0;
 }
